@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mortgage Calculator by James Sammy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="Container">
+        <div class="Calculator">
+            <form id="mortgage-form">
+                <div>
+                    <label class="Title1">Mortgage Calculator</label>
+                </div>
+                <div>
+                    <label class="Title">By James Sammy</label>
+                </div>
+                <div class="FormRow">
+                    <div class="FormItem">
+                        <label for="homePrice">Property Price</label>
+                        <input type="text" id="homePrice" name="homePrice" required oninput="formatNumberInput(this)">
+                    </div>
+                    <div class="FormItem">
+                        <label for="downPayment">Down Payment (%)</label>
+                        <input type="text" step="0.01" id="downPayment" name="downPayment" required max="100"
+                            oninput="formatNumberInput(this)">
+                    </div>
+                </div>
+                <div class="FormRow">
+                    <div class="FormItem">
+                        <label for="loanTerm">Loan Term (years)</label>
+                        <input type="text" id="loanTerm" name="loanTerm" required oninput="formatNumberInput(this)">
+                    </div>
+                    <div class="FormItem">
+                        <label for="interestRate">Interest Rate (% p.a)</label>
+                        <input type="text" step="0.01" id="interestRate" name="interestRate" required max="100"
+                            oninput="formatNumberInput(this)">
+                    </div>
+                </div>
+                <div class="Buttons">
+                    <input type="button" value="Calculate" onclick="calculateMortgage()" class="EqualOperator">
+                    <input type="button" value="Amortization" onclick="generateAmortizationTable()"
+                        class="EqualOperator">
+                </div>
+            </form>
+            <div id="results" class="Results">
+                <h2 class="Head1">Mortgage Summary</h2>
+                <h2 class="Head2">(excluding tax and insurance)</h2>
+                <table>
+                    <tr>
+                        <td>Home Price:</td>
+                        <td id="homeCost">NaN</td>
+                    </tr>
+                    <tr>
+                        <td>Down Payment:</td>
+                        <td id="downPaymentAmt">NaN</td>
+                    </tr>
+                    <tr>
+                        <td>Amount Financed:</td>
+                        <td id="loanAmount">NaN</td>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td>Monthly Payment:</td>
+                        <td id="monthlyPayment">NaN</td>
+                    </tr>
+                    <tr>
+                        <td>Total Mortgage:</td>
+                        <td id="MortgageAmount">NaN</td>
+                    </tr>
+                    <tr>
+                        <td>Interest Amount:</td>
+                        <td id="interestAmount">NaN</td>
+                    </tr>
+                </table>
+            </div>
+            <div id="amortizationTable" class="Results" style="display:none;">
+                <h2 class="Head1">Amortization Schedule</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Month</th>
+                            <th>Installment</th>
+                            <th>Interest</th>
+                            <th>Principal</th>
+                            <th>Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Amortization schedule rows will be added here dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
